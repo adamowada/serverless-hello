@@ -1,9 +1,9 @@
-import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 from socketserver import ThreadingMixIn
 import json
 import ssl
+import requests
 
 
 class handler(BaseHTTPRequestHandler):
@@ -16,11 +16,14 @@ class handler(BaseHTTPRequestHandler):
         # Add the two numbers together
         result = num1 + num2
 
+        # GET request to /api/hello
+        response = requests.get("https://serverless-hello.vercel.app/api/hello")
+
         # Return the result as a JSON object
         self.send_response(200)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
-        response = json.dumps({'result': result})
+        response = json.dumps({'result': result, 'message': response.text})
         self.wfile.write(response.encode())
         return
 
