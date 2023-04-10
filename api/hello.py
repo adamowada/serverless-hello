@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler
-from io import BytesIO
+
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
