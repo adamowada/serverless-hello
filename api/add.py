@@ -19,3 +19,4 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         response = json.dumps({'result': result})
         self.wfile.write(response.encode())
+        return

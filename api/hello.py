@@ -8,3 +8,4 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         message = 'Hello from Python serverless function!'
         self.wfile.write(message.encode())
+        return
